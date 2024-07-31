@@ -1,0 +1,60 @@
+.borders {
+  width: 700px;
+  height: 200px;
+  padding-left: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.line {
+  margin-top: 35px;
+  width: 3px;
+  height: 165px;
+  position: absolute;
+}
+
+.mainclass {
+  gap: 2px;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 1;
+  padding-left: 10px;
+  z-index: 2;
+}
+
+.iconandline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2px;
+}
+
+.borders::before {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  z-index: 1;
+  position: absolute;
+  content: "";
+  top: -25px;
+  left: -40px;
+  border-radius: 40%;
+}
+
+.heading {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.paragraph {
+  margin-top: 0;
+  margin-left: 0;
+  text-align: left;
+}

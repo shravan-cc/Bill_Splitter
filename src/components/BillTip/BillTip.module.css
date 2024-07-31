@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+* {
+  box-sizing: border-box;
+}
+.billContainer {
+  background-color: white;
+  width: 100%;
+  margin-bottom: 65.74px;
+  margin-top: 61.74px;
+}
+
+.labelName {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29.62px;
+  color: #5d6b6c;
+  font-family: "Space Mono", monospace;
+}
+
+.buttonContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+  gap: 24px; /* Space between buttons */
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 24px;
+}
+
+@media (max-width: 550px) {
+  .billContainer {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .labelName {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+  }
+  .buttonContainer {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 1rem;
+    gap: 1rem;
+    width: 100%;
+  }
+}
