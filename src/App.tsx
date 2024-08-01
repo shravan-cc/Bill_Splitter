@@ -17,6 +17,8 @@ import {
   faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import { NumberInput } from "./components/NumberInput/NumberInput";
+import { FinalForm } from "./components/FinalForm/FinalForm";
+import { SwapPerson } from "./components/swappy-person/swappy-person";
 
 function App() {
   //const [count, setCount] = useState(0);
@@ -84,7 +86,7 @@ function App() {
       </div>
     </div>*/
     <>
-      <NumberInput value={0} typeOfIcon="dollar" label="Bill" />
+      <SwapPerson id={2} />
     </>
   );
 }

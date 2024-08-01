@@ -1,12 +1,12 @@
 .container {
   background-color: white;
-  width: 556.89px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 @media (max-width: 550px) {
   .container {
-    width: 285px;
+    width: 100%;
   }
 }

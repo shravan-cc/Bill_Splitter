@@ -2,7 +2,7 @@
 
 .container {
   background-color: #00474b;
-  width: 566px;
+  width: 100%;
   padding: 56px;
   border-radius: 16px;
 }
@@ -21,16 +21,23 @@
   border-radius: 7px;
 }
 
+.resetBtn:hover {
+  background-color: #25c2ad;
+  color: #00474b;
+}
+
 @media (max-width: 550px) {
   .resetBtn {
     font-size: 1.25rem;
     line-height: 29.62px;
     width: 100%;
     border-radius: 4.32px;
+    margin-top: 43px;
   }
   .container {
-    width: 285px;
+    width: 100%;
     padding: 24px 16px 16px 16px;
-    margin-top: 58px;
+    margin-top: 8px;
+    margin-bottom: 8px;
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
 
@@ -15,16 +16,48 @@ async function fetchPerson(id: number) {
   return jsonObj;
 }
 
-export function swapPerson({ id }: personId) {
-  const [personInfo, setPerson] = useState<Person>({ name: "Shravan" });
+const delay = (time: number) =>
+  new Promise((resolve, reject) => setTimeout(resolve, time));
+
+export function SwapPerson({ id }: personId) {
+  const [status, setStatus] = useState<"loading" | "success" | "Failed">(
+    "loading"
+  );
+
+  const [personInfo, setPerson] = useState<Person>({ name: "" });
 
   useEffect(() => {
+    setStatus("loading");
     async function fetchPersonId() {
-      const person = await fetchPerson(id);
-      setPerson(person);
+      try {
+        await delay(3000);
+        const person = await fetchPerson(id);
+        setPerson(person);
+        setStatus("success");
+      } catch (e: any) {
+        console.error(e);
+        setStatus("Failed");
+      }
     }
     fetchPersonId();
   }, [id]);
 
-  return <div>{personInfo.name}</div>;
+  let statusValue;
+  switch (status) {
+    case "loading":
+      statusValue = <div>Loading...</div>;
+      break;
+    case "success":
+      statusValue = <div>Success</div>;
+      break;
+    case "Failed":
+      statusValue = <div>Failed</div>;
+      break;
+  }
+
+  return (
+    <div>
+      {personInfo.name} {statusValue}
+    </div>
+  );
 }
