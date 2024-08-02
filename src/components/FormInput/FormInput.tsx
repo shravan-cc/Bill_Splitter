@@ -4,45 +4,84 @@ import { NumberInput } from "../NumberInput/NumberInput";
 import { BillTip } from "../BillTip/BillTip";
 
 export function FormInput() {
-  const [value, setValue] = useState<string>("");
-  const [errorObj, setError] = useState<{ error: string; hasError: boolean }>({
-    error: "",
-    hasError: false,
+  const [value, setValue] = useState<{ bill: string; person: string }>({
+    bill: "",
+    person: "",
   });
-  const [changed, makeChange] = useState<boolean>(false);
+  const [errorObj, setError] = useState<{
+    bill: { error: string; hasError: boolean };
+    person: { error: string; hasError: boolean };
+  }>({
+    bill: { error: "", hasError: false },
+    person: { error: "", hasError: false },
+  });
+  const [changed, makeChange] = useState<{ bill: boolean; person: boolean }>({
+    bill: false,
+    person: false,
+  });
 
   useEffect(() => {
-    let hasError = false;
-    let errorMessage = "";
-    if (changed) {
-      if (value === "") {
-        errorMessage = "Value cannot be empty";
-        hasError = true;
-      } else if (isNaN(Number(value))) {
-        errorMessage = "Please enter a number";
-        hasError = true;
-      } else if (Number(value) <= 0) {
-        errorMessage = "Value must be greater than zero";
-        hasError = true;
+    const validateInput = (field: "bill" | "person", value: string) => {
+      let hasError = false;
+      let errorMessage = "";
+      if (changed[field]) {
+        if (field === "person") {
+          if (!Number.isInteger(value)) {
+            errorMessage = "Please enter valid number of people";
+            hasError = true;
+          }
+        }
+        if (value === "") {
+          errorMessage = "Value cannot be empty";
+          hasError = true;
+        } else if (isNaN(Number(value))) {
+          errorMessage = "Please enter a number";
+          hasError = true;
+        } else if (Number(value) <= 0) {
+          errorMessage = "Value must be greater than zero";
+          hasError = true;
+        }
       }
+      setError((prev) => ({
+        ...prev,
+        [field]: { error: errorMessage, hasError },
+      }));
+    };
+
+    validateInput("bill", value.bill);
+    validateInput("person", value.person);
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: "bill" | "person"
+  ) => {
+    const newValue = e.target.value;
+    if (newValue === "") {
+      setValue((prev) => ({
+        ...prev,
+        [field]: newValue,
+      }));
+    } else {
+      setValue((prev) => ({
+        ...prev,
+        [field]: Number(newValue),
+      }));
     }
 
-    setError({ error: errorMessage, hasError });
-  }, [value]); // Only run when `value` changes
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-    makeChange(true);
+    makeChange((prev) => ({
+      ...prev,
+      [field]: true,
+    }));
   };
   return (
     <div className={styles.container}>
       <NumberInput
         label="Bill"
         typeOfIcon="dollar"
-        error={errorObj}
-        onChange={handleInputChange}
-        value={value}
-        change={changed}
+        error={errorObj.bill}
+        onChange={(e) => handleInputChange(e, "bill")}
+        value={value.bill}
       />
       <BillTip
         label="Select Tip %"
@@ -51,10 +90,9 @@ export function FormInput() {
       <NumberInput
         label="Number of People"
         typeOfIcon="person"
-        error={errorObj}
-        onChange={handleInputChange}
-        value={value}
-        change={changed}
+        error={errorObj.person}
+        onChange={(e) => handleInputChange(e, "person")}
+        value={value.person}
       />
     </div>
   );

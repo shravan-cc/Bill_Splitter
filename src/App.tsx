@@ -86,7 +86,7 @@ function App() {
       </div>
     </div>*/
     <>
-      <SwapPerson id={2} />
+      <FinalForm />
     </>
   );
 }

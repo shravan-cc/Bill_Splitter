@@ -20,6 +20,11 @@
   width: 100%;
 }
 
+.normal:hover {
+  background-color: #26c2ad;
+  color: #00474b;
+}
+
 .custom {
   padding: 15px 29px;
   border-radius: 6px;

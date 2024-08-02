@@ -9,13 +9,11 @@ interface NumberInputProps extends React.ComponentProps<"input"> {
   label: string;
   typeOfIcon: "person" | "dollar";
   error?: { error: string; hasError: boolean };
-  change: boolean;
 } // Define your props here } export function
 export function NumberInput({
   label,
   typeOfIcon,
   error,
-  change,
   ...inputProps
 }: NumberInputProps) {
   /*const [value, setValue] = useState<string>(""); */
@@ -54,7 +52,7 @@ export function NumberInput({
           <FontAwesomeIcon icon={faUser} className={styles.icon} />
         )}
         <input
-          type="text"
+          type="number"
           id="number-input"
           className={styles.numberInput}
           {...inputProps}
