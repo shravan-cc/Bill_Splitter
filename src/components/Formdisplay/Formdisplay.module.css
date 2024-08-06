@@ -19,11 +19,16 @@
   width: 454px;
   margin-top: 135px;
   border-radius: 7px;
+  outline: none;
+  cursor: not-allowed;
 }
 
-.resetBtn:hover {
+.resetBtn:hover:not(:disabled) {
   background-color: #25c2ad;
   color: #00474b;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 @media (max-width: 550px) {

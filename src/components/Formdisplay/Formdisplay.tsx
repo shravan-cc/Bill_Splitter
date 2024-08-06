@@ -2,12 +2,30 @@ import React from "react";
 import styles from "./Formdisplay.module.css";
 import { Tipamount } from "../Tipamount/Tipamount";
 
-export function Formdisplay() {
+interface FormDisplayProps {
+  resetValues: () => void;
+  tipAmount: string;
+  totalAmount: string;
+  disableButton: boolean;
+}
+
+export function Formdisplay({
+  resetValues,
+  tipAmount,
+  totalAmount,
+  disableButton,
+}: FormDisplayProps) {
   return (
     <div className={styles.container}>
-      <Tipamount title="Tip Amount" value="0.00" />
-      <Tipamount title="Total" value="0.00" />
-      <button className={styles.resetBtn}>RESET</button>
+      <Tipamount title="Tip Amount" value={tipAmount} />
+      <Tipamount title="Total" value={totalAmount} />
+      <button
+        className={styles.resetBtn}
+        onClick={resetValues}
+        disabled={!disableButton}
+      >
+        RESET
+      </button>
     </div>
   );
 }

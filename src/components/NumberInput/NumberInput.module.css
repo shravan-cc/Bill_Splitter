@@ -48,6 +48,14 @@
   margin-top: 14px;
 }
 
+.numberInput:focus {
+  outline: none;
+}
+
+.inputWrapper:focus-within:not(.errorInput) {
+  border: 2px solid #00474b;
+}
+
 .icon {
   position: absolute;
   font-size: 1.5rem;
