@@ -158,7 +158,6 @@ export function FinalForm() {
   };
 
   const disabeleButton = state.changed.bill || state.changed.person;
-
   return (
     <div className={styles.container}>
       <FormInput
