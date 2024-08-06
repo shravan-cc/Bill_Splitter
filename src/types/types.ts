@@ -1,8 +1,6 @@
 export interface State {
-  value: {
-    bill: number;
-    person: number;
-  };
+  bill: number;
+  person: number;
   changed: {
     bill: boolean;
     person: boolean;
@@ -17,13 +15,14 @@ export interface State {
       hasError: boolean;
     };
   };
-  btnValue: number;
+  selectedTip: number;
   customValue: string;
 }
 
 export type Action =
-  | { type: "SET_BUTTON"; btnValue: number }
-  | { type: "SET_VALUE"; field: "bill" | "person"; value: number }
+  | { type: "SET_TIP_VALUE"; payload: number }
+  | { type: "SET_BILL_VALUE"; payload: number }
+  | { type: "SET_PERSON_VALUE"; payload: number }
   | { type: "MAKE_CHANGE"; field: "bill" | "person"; changed: boolean }
   | {
       type: "SET_ERROR";

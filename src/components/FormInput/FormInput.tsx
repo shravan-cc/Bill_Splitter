@@ -5,7 +5,8 @@ import { NumberInput } from "../NumberInput/NumberInput";
 import { BillTip } from "../BillTip/BillTip";
 
 interface FormInputProps {
-  value: { bill: number; person: number };
+  bill: number;
+  person: number;
   error: {
     bill: {
       error: string;
@@ -18,20 +19,22 @@ interface FormInputProps {
   };
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement>,
-    field: "bill" | "person"
+    field: "bill" | "person",
+    type: "SET_BILL_VALUE" | "SET_PERSON_VALUE"
   ) => void;
-  setBtnValue: (btnValue: number) => void;
+  setBtnValue: (selectedTip: number) => void;
   customValue: string;
   handleInputChangeInCustom: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleCustomClick: () => void;
   handleBlur: () => void;
   inputRef: any;
   inputFocus: () => void;
-  btnValue: number;
+  selectedTip: number;
 }
 
 export function FormInput({
-  value,
+  bill,
+  person,
   error,
   handleChange,
   setBtnValue,
@@ -41,7 +44,7 @@ export function FormInput({
   handleBlur,
   inputRef,
   inputFocus,
-  btnValue,
+  selectedTip,
 }: FormInputProps) {
   return (
     <div className={styles.container}>
@@ -49,8 +52,8 @@ export function FormInput({
         label="Bill"
         typeOfIcon="dollar"
         error={error.bill}
-        onChange={(e) => handleChange(e, "bill")}
-        value={value.bill}
+        onChange={(e) => handleChange(e, "bill", "SET_BILL_VALUE")}
+        value={bill}
       />
       <BillTip
         label="Select Tip %"
@@ -62,14 +65,14 @@ export function FormInput({
         handleBlur={handleBlur}
         inputRef={inputRef}
         inputFocus={inputFocus}
-        btnValue={btnValue}
+        selectedTip={selectedTip}
       />
       <NumberInput
         label="Number of People"
         typeOfIcon="person"
         error={error.person}
-        onChange={(e) => handleChange(e, "person")}
-        value={value.person}
+        onChange={(e) => handleChange(e, "person", "SET_PERSON_VALUE")}
+        value={person}
       />
     </div>
   );

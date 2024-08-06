@@ -5,14 +5,14 @@ import { ButtonInput } from "../ButtonInput/ButtonInput";
 interface BillTipProps {
   label: string;
   values: string[];
-  setBtnValue: (btnValue: number) => void;
+  setBtnValue: (selectedTip: number) => void;
   customValue: string;
   handleInputChangeInCustom: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleCustomClick: () => void;
   handleBlur: () => void;
   inputRef: any;
   inputFocus: () => void;
-  btnValue: number;
+  selectedTip: number;
 }
 
 export function BillTip({
@@ -25,7 +25,7 @@ export function BillTip({
   handleBlur,
   inputRef,
   inputFocus,
-  btnValue,
+  selectedTip,
 }: BillTipProps) {
   return (
     <div className={styles.billContainer}>
@@ -38,7 +38,7 @@ export function BillTip({
               types="custom"
               key={value}
               onClick={inputFocus}
-              btnValue={btnValue}
+              selectedTip={selectedTip}
             >
               <input
                 ref={inputRef}
@@ -59,7 +59,7 @@ export function BillTip({
                 setBtnValue(Number(value.slice(0, -1)));
                 //setActiveButton(value);
               }}
-              btnValue={btnValue}
+              selectedTip={selectedTip}
             />
           )
         )}

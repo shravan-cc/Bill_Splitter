@@ -3,21 +3,21 @@ import styles from "./ButtonInput.module.css";
 interface ButtonInputProps extends React.ComponentProps<"button"> {
   value: string;
   types: "normal" | "custom";
-  btnValue: number;
+  selectedTip: number;
 }
 
 export function ButtonInput({
   value,
   types,
   children,
-  btnValue,
+  selectedTip,
   ...buttonProps
 }: ButtonInputProps) {
   return (
     <div className={styles.container}>
       <button
         value={value}
-        className={`${styles[types]} ${btnValue === Number(value.slice(0, -1)) ? styles.active : ""}`}
+        className={`${styles[types]} ${selectedTip === Number(value.slice(0, -1)) ? styles.active : ""}`}
         {...buttonProps}
       >
         {children || value}

@@ -60,13 +60,14 @@ export function FinalForm() {
       });
     };
 
-    validateInput("bill", state.value.bill);
-    validateInput("person", state.value.person);
-  }, [state.value, state.changed]);
+    validateInput("bill", state.bill);
+    validateInput("person", state.person);
+  }, [state.bill, state.changed]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    field: "bill" | "person"
+    field: "bill" | "person",
+    type: "SET_BILL_VALUE" | "SET_PERSON_VALUE"
   ) => {
     const newValue = parseFloat(e.target.value);
 
@@ -74,7 +75,7 @@ export function FinalForm() {
       ...prev,
       [field]: Number(newValue),
     }));*/
-    dispatch({ type: "SET_VALUE", field: field, value: Number(newValue) });
+    dispatch({ type, field: field, payload: Number(newValue) });
 
     // makeChange((prev) => ({
     //   ...prev,
@@ -104,9 +105,9 @@ export function FinalForm() {
     //setCustom(newValue);
     dispatch({ type: "SET_CUSTOM", customValue: newValue });
     if (!isNaN(parseFloat(newValue))) {
-      dispatch({ type: "SET_BUTTON", btnValue: parseFloat(newValue) });
+      dispatch({ type: "SET_TIP_VALUE", payload: parseFloat(newValue) });
     } else if (newValue === "") {
-      dispatch({ type: "SET_BUTTON", btnValue: 0 });
+      dispatch({ type: "SET_TIP_VALUE", payload: 0 });
     }
   }
 
@@ -146,12 +147,12 @@ export function FinalForm() {
         : "0.00"
       : "0.00";*/
   const amount = (isTip: boolean) => {
-    return state.changed.bill && state.value.person > 0
-      ? state.value.bill > 0
+    return state.changed.bill && state.person > 0
+      ? state.bill > 0
         ? (
-            (state.value.bill * (state.btnValue / 100) +
-              (isTip ? 0 : state.value.bill)) /
-            state.value.person
+            (state.bill * (state.selectedTip / 100) +
+              (isTip ? 0 : state.bill)) /
+            state.person
           ).toFixed(2)
         : "0.00"
       : "0.00";
@@ -161,11 +162,12 @@ export function FinalForm() {
   return (
     <div className={styles.container}>
       <FormInput
-        value={state.value}
+        bill={state.bill}
+        person={state.person}
         error={state.errorObj}
         handleChange={handleInputChange}
-        setBtnValue={(btnValue: number) =>
-          dispatch({ type: "SET_BUTTON", btnValue })
+        setBtnValue={(selectedTip: number) =>
+          dispatch({ type: "SET_TIP_VALUE", payload: selectedTip })
         }
         customValue={state.customValue}
         handleInputChangeInCustom={handleInputChangeInCustom}
@@ -173,7 +175,7 @@ export function FinalForm() {
         handleBlur={handleBlur}
         inputRef={inputRef}
         inputFocus={inputFocus}
-        btnValue={state.btnValue}
+        selectedTip={state.selectedTip}
       />
       <Formdisplay
         resetValues={resetValues}

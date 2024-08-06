@@ -1,11 +1,9 @@
 import { State, Action } from "../types/types";
 
 export const initialState: State = {
-  value: {
-    bill: 0,
-    person: 1,
-  },
-  btnValue: 0,
+  bill: 0,
+  person: 1,
+  selectedTip: 0,
   changed: {
     bill: false,
     person: false,
@@ -25,15 +23,20 @@ export const initialState: State = {
 
 export function reducer(state: State, action: Action) {
   switch (action.type) {
-    case "SET_BUTTON":
+    case "SET_TIP_VALUE":
       return {
         ...state,
-        btnValue: action.btnValue,
+        selectedTip: action.payload,
       };
-    case "SET_VALUE":
+    case "SET_BILL_VALUE":
       return {
         ...state,
-        value: { ...state.value, [action.field]: action.value },
+        bill: action.payload,
+      };
+    case "SET_PERSON_VALUE":
+      return {
+        ...state,
+        person: action.payload,
       };
     case "MAKE_CHANGE":
       return {
