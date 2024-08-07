@@ -27,3 +27,16 @@ export const CustomButton: Story = {
     type: "custom",
   },
 };
+export const CustomButton: Story = {
+  args: {
+    value: "Custom",
+    type: "custom",
+  },
+};
+
+export const CustomButton: Story = {
+  args: {
+    value: "Custom",
+    type: "custom",
+  },
+};
