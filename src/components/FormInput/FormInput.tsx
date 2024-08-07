@@ -7,19 +7,9 @@ import { BillTip } from "../BillTip/BillTip";
 interface FormInputProps {
   bill: number;
   person: number;
-  error: {
-    bill: {
-      error: string;
-      hasError: boolean;
-    };
-    person: {
-      error: string;
-      hasError: boolean;
-    };
-  };
+  error: { billErrorMessage: string; personErrorMessage: string };
   handleChange: (
     e: React.ChangeEvent<HTMLInputElement>,
-    field: "bill" | "person",
     type: "SET_BILL_VALUE" | "SET_PERSON_VALUE"
   ) => void;
   setBtnValue: (selectedTip: number) => void;
@@ -51,8 +41,8 @@ export function FormInput({
       <NumberInput
         label="Bill"
         typeOfIcon="dollar"
-        error={error.bill}
-        onChange={(e) => handleChange(e, "bill", "SET_BILL_VALUE")}
+        error={error.billErrorMessage}
+        onChange={(e) => handleChange(e, "SET_BILL_VALUE")}
         value={bill}
       />
       <BillTip
@@ -70,8 +60,8 @@ export function FormInput({
       <NumberInput
         label="Number of People"
         typeOfIcon="person"
-        error={error.person}
-        onChange={(e) => handleChange(e, "person", "SET_PERSON_VALUE")}
+        error={error.personErrorMessage}
+        onChange={(e) => handleChange(e, "SET_PERSON_VALUE")}
         value={person}
       />
     </div>

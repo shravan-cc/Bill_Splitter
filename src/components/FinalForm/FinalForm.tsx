@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef } from "react";
+import React, { useReducer, useRef } from "react";
 import styles from "./FinalForm.module.css";
 import { FormInput } from "../FormInput/FormInput";
 import { Formdisplay } from "../Formdisplay/Formdisplay";
@@ -7,96 +7,37 @@ import { reducer, initialState } from "../../reducers/reducer";
 
 export function FinalForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  /*const [value, setValue] = useState<{ bill: number; person: number }>({
-    bill: 0,
-    person: 1,
-  });*/
 
-  /*const [changed, makeChange] = useState<{ bill: boolean; person: boolean }>({
-    bill: false,
-    person: false,
-  });*/
+  const billTouched = useRef<boolean>(false);
 
-  /*const [errorObj, setError] = useState<{
-    bill: { error: string; hasError: boolean };
-    person: { error: string; hasError: boolean };
-  }>({
-    bill: { error: "", hasError: false },
-    person: { error: "", hasError: false },
-  });*/
+  const error = {
+    billErrorMessage: billTouched.current
+      ? isNaN(state.bill) || state.bill <= 0
+        ? "Please enter valid bill amount"
+        : ""
+      : "",
 
-  //const [btnValue, setBtnValue] = useState<number>(0);
-
-  //const [customValue, setCustom] = useState<string>("Custom");
-
-  useEffect(() => {
-    const validateInput = (field: "bill" | "person", value: number) => {
-      let hasError = false;
-      let errorMessage = "";
-      if (state.changed[field]) {
-        if (field === "person") {
-          if (!Number.isInteger(value)) {
-            errorMessage = "Please enter valid number of people";
-            hasError = true;
-          }
-        }
-        if (isNaN(Number(value))) {
-          errorMessage = "Please enter a number";
-          hasError = true;
-        } else if (Number(value) <= 0) {
-          errorMessage = "Value must be greater than zero";
-          hasError = true;
-        }
-      }
-      /*setError((prev) => ({
-        ...prev,
-        [field]: { error: errorMessage, hasError },
-      }));*/
-      dispatch({
-        type: "SET_ERROR",
-        field: field,
-        error: errorMessage,
-        hasError,
-      });
-    };
-
-    validateInput("bill", state.bill);
-    validateInput("person", state.person);
-  }, [state.bill, state.changed]);
+    personErrorMessage:
+      isNaN(state.person) ||
+      state.person <= 0 ||
+      !Number.isInteger(state.person)
+        ? "Please enter valid number of people"
+        : "",
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    field: "bill" | "person",
     type: "SET_BILL_VALUE" | "SET_PERSON_VALUE"
   ) => {
     const newValue = parseFloat(e.target.value);
+    if (type === "SET_BILL_VALUE") {
+      billTouched.current = true;
+    }
 
-    /*setValue((prev) => ({
-      ...prev,
-      [field]: Number(newValue),
-    }));*/
-    dispatch({ type, field: field, payload: Number(newValue) });
-
-    // makeChange((prev) => ({
-    //   ...prev,
-    //   [field]: true,
-    // }));
-    dispatch({ type: "MAKE_CHANGE", field: field, changed: true });
+    dispatch({ type, payload: Number(newValue) });
   };
 
   function resetValues() {
-    /*setValue({ bill: 0, person: 1 });*/
-
-    // makeChange((prev) => ({
-    //   ...prev,
-    //   ["bill"]: false,
-    // }));
-
-    // makeChange((prev) => ({
-    //   ...prev,
-    //   ["person"]: false,
-    // }));
-
     dispatch({ type: "RESET" });
   }
 
@@ -147,7 +88,7 @@ export function FinalForm() {
         : "0.00"
       : "0.00";*/
   const amount = (isTip: boolean) => {
-    return state.changed.bill && state.person > 0
+    return state.person > 0
       ? state.bill > 0
         ? (
             (state.bill * (state.selectedTip / 100) +
@@ -158,13 +99,13 @@ export function FinalForm() {
       : "0.00";
   };
 
-  const disabeleButton = state.changed.bill || state.changed.person;
+  const disabeleButton = state.bill !== 0 || state.person !== 1;
   return (
     <div className={styles.container}>
       <FormInput
         bill={state.bill}
         person={state.person}
-        error={state.errorObj}
+        error={error}
         handleChange={handleInputChange}
         setBtnValue={(selectedTip: number) =>
           dispatch({ type: "SET_TIP_VALUE", payload: selectedTip })

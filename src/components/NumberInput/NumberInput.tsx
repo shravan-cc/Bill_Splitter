@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface NumberInputProps extends React.ComponentProps<"input"> {
   label: string;
   typeOfIcon: "person" | "dollar";
-  error?: { error: string; hasError: boolean };
+  error?: string;
 } // Define your props here } export function
 export function NumberInput({
   label,
@@ -44,7 +44,7 @@ export function NumberInput({
         {label}
       </label>
       <div
-        className={`${styles.inputWrapper} ${error?.hasError ? styles.errorInput : ""} `}
+        className={`${styles.inputWrapper} ${error ? styles.errorInput : ""} `}
       >
         {typeOfIcon === "dollar" ? (
           <FontAwesomeIcon icon={faDollar} className={styles.icon} />
@@ -58,7 +58,7 @@ export function NumberInput({
           {...inputProps}
         />
       </div>
-      <span className={styles.error}>{error?.error}</span>
+      <span className={styles.error}>{error}</span>
     </div>
   );
 }
