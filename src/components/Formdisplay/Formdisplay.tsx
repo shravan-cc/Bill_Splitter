@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Formdisplay.module.css";
 import { Tipamount } from "../Tipamount/Tipamount";
 
