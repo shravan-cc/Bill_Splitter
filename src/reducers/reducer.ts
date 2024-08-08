@@ -4,7 +4,6 @@ export const initialState: State = {
   bill: 0,
   person: 1,
   selectedTip: 0,
-  customValue: "Custom",
 };
 
 export function reducer(state: State, action: Action) {
@@ -23,11 +22,6 @@ export function reducer(state: State, action: Action) {
       return {
         ...state,
         person: action.payload,
-      };
-    case "SET_CUSTOM":
-      return {
-        ...state,
-        customValue: action.customValue,
       };
     case "RESET":
       return initialState;

@@ -39,12 +39,15 @@ export function FinalForm() {
 
   function resetValues() {
     dispatch({ type: "RESET" });
+    billTouched.current = false;
+    if (inputRef.current) {
+      inputRef.current.placeholder = "Custom";
+      inputRef.current.value = "";
+    }
   }
 
   function handleInputChangeInCustom(e: React.ChangeEvent<HTMLInputElement>) {
     const newValue = e.target.value;
-    //setCustom(newValue);
-    dispatch({ type: "SET_CUSTOM", customValue: newValue });
     if (!isNaN(parseFloat(newValue))) {
       dispatch({ type: "SET_TIP_VALUE", payload: parseFloat(newValue) });
     } else if (newValue === "") {
@@ -52,24 +55,18 @@ export function FinalForm() {
     }
   }
 
-  function handleCustomClick() {
-    if (state.customValue === "Custom") {
-      //setCustom("");
-      dispatch({ type: "SET_CUSTOM", customValue: "" });
-    }
-  }
-
   function handleBlur() {
-    if (state.customValue === "") {
-      dispatch({ type: "SET_CUSTOM", customValue: "Custom" });
+    if (inputRef.current) {
+      inputRef.current.placeholder = "Custom";
     }
   }
 
   const inputRef = useRef<HTMLInputElement>(null);
+
   function inputFocus() {
     if (inputRef.current) {
       inputRef.current.focus();
-      dispatch({ type: "SET_CUSTOM", customValue: "" });
+      inputRef.current.placeholder = "";
     }
   }
 
@@ -99,7 +96,8 @@ export function FinalForm() {
       : "0.00";
   };
 
-  const disabeleButton = state.bill !== 0 || state.person !== 1;
+  const disabeleButton =
+    state.bill !== 0 || state.person !== 1 || state.selectedTip !== 0;
   return (
     <div className={styles.container}>
       <FormInput
@@ -110,9 +108,7 @@ export function FinalForm() {
         setBtnValue={(selectedTip: number) =>
           dispatch({ type: "SET_TIP_VALUE", payload: selectedTip })
         }
-        customValue={state.customValue}
         handleInputChangeInCustom={handleInputChangeInCustom}
-        handleCustomClick={handleCustomClick}
         handleBlur={handleBlur}
         inputRef={inputRef}
         inputFocus={inputFocus}

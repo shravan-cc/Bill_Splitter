@@ -13,9 +13,7 @@ interface FormInputProps {
     type: "SET_BILL_VALUE" | "SET_PERSON_VALUE"
   ) => void;
   setBtnValue: (selectedTip: number) => void;
-  customValue: string;
   handleInputChangeInCustom: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleCustomClick: () => void;
   handleBlur: () => void;
   inputRef: any;
   inputFocus: () => void;
@@ -28,9 +26,9 @@ export function FormInput({
   error,
   handleChange,
   setBtnValue,
-  customValue,
+  //customValue,
   handleInputChangeInCustom,
-  handleCustomClick,
+  //handleCustomClick,
   handleBlur,
   inputRef,
   inputFocus,
@@ -49,9 +47,7 @@ export function FormInput({
         label="Select Tip %"
         values={["5%", "10%", "15%", "25%", "50%", "Custom"]}
         setBtnValue={setBtnValue}
-        customValue={customValue}
         handleInputChangeInCustom={handleInputChangeInCustom}
-        handleCustomClick={handleCustomClick}
         handleBlur={handleBlur}
         inputRef={inputRef}
         inputFocus={inputFocus}

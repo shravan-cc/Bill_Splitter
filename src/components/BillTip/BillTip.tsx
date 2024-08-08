@@ -6,9 +6,9 @@ interface BillTipProps {
   label: string;
   values: string[];
   setBtnValue: (selectedTip: number) => void;
-  customValue: string;
+  //customValue: string;
   handleInputChangeInCustom: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleCustomClick: () => void;
+  //handleCustomClick: () => void;
   handleBlur: () => void;
   inputRef: any;
   inputFocus: () => void;
@@ -19,9 +19,9 @@ export function BillTip({
   label,
   values,
   setBtnValue,
-  customValue,
+  //customValue,
   handleInputChangeInCustom,
-  handleCustomClick,
+  //handleCustomClick,
   handleBlur,
   inputRef,
   inputFocus,
@@ -44,9 +44,8 @@ export function BillTip({
                 ref={inputRef}
                 type="text"
                 className={styles.inputContainer}
-                value={customValue}
+                placeholder="Custom"
                 aria-label="Custom tip percentage"
-                onClick={handleCustomClick}
                 onChange={handleInputChangeInCustom}
                 onBlur={handleBlur}
               />
@@ -57,6 +56,7 @@ export function BillTip({
               types="normal"
               onClick={() => {
                 setBtnValue(Number(value.slice(0, -1)));
+                inputRef.current.value = "";
                 //setActiveButton(value);
               }}
               selectedTip={selectedTip}
