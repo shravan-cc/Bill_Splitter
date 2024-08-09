@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+
 import styles from "./BillTip.module.css";
 import { ButtonInput } from "../ButtonInput/ButtonInput";
 interface BillTipProps {
@@ -8,11 +8,10 @@ interface BillTipProps {
   setBtnValue: (selectedTip: number) => void;
   //customValue: string;
   handleInputChangeInCustom: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  //handleCustomClick: () => void;
-  handleBlur: () => void;
   inputRef: any;
-  inputFocus: () => void;
   selectedTip: number;
+  isCustomInputVisible: boolean;
+  setCustomInputVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function BillTip({
@@ -22,18 +21,29 @@ export function BillTip({
   //customValue,
   handleInputChangeInCustom,
   //handleCustomClick,
-  handleBlur,
   inputRef,
-  inputFocus,
   selectedTip,
+  isCustomInputVisible,
+  setCustomInputVisible,
 }: BillTipProps) {
+  function handleCustomClick() {
+    setCustomInputVisible(true);
+    setTimeout(() => {
+      inputRef.current && inputRef.current.focus();
+    }, 0);
+  }
+
+  function handleCustomBlur() {
+    if (inputRef.current.value === "") setCustomInputVisible(false);
+  }
+
   return (
     <div className={styles.billContainer}>
       <label className={styles.labelName}>{label}</label>
       <div className={styles.buttonContainer}>
         {values.map((value) =>
           value === "Custom" ? (
-            <ButtonInput
+            /*<ButtonInput
               value={value}
               types="custom"
               key={value}
@@ -49,14 +59,33 @@ export function BillTip({
                 onChange={handleInputChangeInCustom}
                 onBlur={handleBlur}
               />
-            </ButtonInput>
+            </ButtonInput>*/
+            isCustomInputVisible ? (
+              <input
+                ref={inputRef}
+                type="text"
+                className={styles.inputContainer}
+                //placeholder="Custom"
+                aria-label="Custom tip percentage"
+                onChange={handleInputChangeInCustom}
+                onBlur={handleCustomBlur}
+              />
+            ) : (
+              <ButtonInput
+                value={value}
+                types="custom"
+                key={value}
+                onClick={handleCustomClick}
+                selectedTip={selectedTip}
+              ></ButtonInput>
+            )
           ) : (
             <ButtonInput
               value={value}
               types="normal"
               onClick={() => {
                 setBtnValue(Number(value.slice(0, -1)));
-                inputRef.current.value = "";
+                setCustomInputVisible(false);
                 //setActiveButton(value);
               }}
               selectedTip={selectedTip}

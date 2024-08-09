@@ -1,13 +1,13 @@
 .container {
   background-color: white;
   display: flex;
-  gap: 66px;
+  gap: 4.125rem;
 }
 
 @media (max-width: 550px) {
   .container {
     flex-direction: column;
-    gap: 32px;
+    gap: 2rem;
     width: 100%;
   }
 }

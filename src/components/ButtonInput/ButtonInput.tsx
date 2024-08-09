@@ -9,7 +9,6 @@ interface ButtonInputProps extends React.ComponentProps<"button"> {
 export function ButtonInput({
   value,
   types,
-  children,
   selectedTip,
   ...buttonProps
 }: ButtonInputProps) {
@@ -20,7 +19,7 @@ export function ButtonInput({
         className={`${styles[types]} ${selectedTip === Number(value.slice(0, -1)) ? styles.active : ""}`}
         {...buttonProps}
       >
-        {children || value}
+        {value}
       </button>
     </div>
   );

@@ -36,15 +36,14 @@
   font-family: "Space Mono", monospace;
   border: none;
   font-weight: 700;
+  font-size: 24px;
+  line-height: 35.54px;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.custom:focus-within {
-  border: 2px solid #26c2ad;
+  width: 100%;
 }
 
 @media (max-width: 550px) {

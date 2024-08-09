@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from "react";
+import React, { useReducer, useRef, useState } from "react";
 import styles from "./FinalForm.module.css";
 import { FormInput } from "../FormInput/FormInput";
 import { Formdisplay } from "../Formdisplay/Formdisplay";
@@ -37,13 +37,16 @@ export function FinalForm() {
     dispatch({ type, payload: Number(newValue) });
   };
 
+  const [isCustomInputVisible, setCustomInputVisible] =
+    useState<boolean>(false);
+
   function resetValues() {
     dispatch({ type: "RESET" });
     billTouched.current = false;
     if (inputRef.current) {
-      inputRef.current.placeholder = "Custom";
       inputRef.current.value = "";
     }
+    setCustomInputVisible(false);
   }
 
   function handleInputChangeInCustom(e: React.ChangeEvent<HTMLInputElement>) {
@@ -55,20 +58,7 @@ export function FinalForm() {
     }
   }
 
-  function handleBlur() {
-    if (inputRef.current) {
-      inputRef.current.placeholder = "Custom";
-    }
-  }
-
   const inputRef = useRef<HTMLInputElement>(null);
-
-  function inputFocus() {
-    if (inputRef.current) {
-      inputRef.current.focus();
-      inputRef.current.placeholder = "";
-    }
-  }
 
   /*const tipAmount =
     changed.bill && value.person > 0
@@ -84,6 +74,7 @@ export function FinalForm() {
           )
         : "0.00"
       : "0.00";*/
+
   const amount = (isTip: boolean) => {
     return state.person > 0
       ? state.bill > 0
@@ -109,10 +100,10 @@ export function FinalForm() {
           dispatch({ type: "SET_TIP_VALUE", payload: selectedTip })
         }
         handleInputChangeInCustom={handleInputChangeInCustom}
-        handleBlur={handleBlur}
         inputRef={inputRef}
-        inputFocus={inputFocus}
         selectedTip={state.selectedTip}
+        isCustomInputVisible={isCustomInputVisible}
+        setCustomInputVisible={setCustomInputVisible}
       />
       <Formdisplay
         resetValues={resetValues}

@@ -14,10 +14,10 @@ interface FormInputProps {
   ) => void;
   setBtnValue: (selectedTip: number) => void;
   handleInputChangeInCustom: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleBlur: () => void;
   inputRef: any;
-  inputFocus: () => void;
   selectedTip: number;
+  isCustomInputVisible: boolean;
+  setCustomInputVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function FormInput({
@@ -29,10 +29,10 @@ export function FormInput({
   //customValue,
   handleInputChangeInCustom,
   //handleCustomClick,
-  handleBlur,
   inputRef,
-  inputFocus,
   selectedTip,
+  isCustomInputVisible,
+  setCustomInputVisible,
 }: FormInputProps) {
   return (
     <div className={styles.container}>
@@ -48,10 +48,10 @@ export function FormInput({
         values={["5%", "10%", "15%", "25%", "50%", "Custom"]}
         setBtnValue={setBtnValue}
         handleInputChangeInCustom={handleInputChangeInCustom}
-        handleBlur={handleBlur}
         inputRef={inputRef}
-        inputFocus={inputFocus}
         selectedTip={selectedTip}
+        isCustomInputVisible={isCustomInputVisible}
+        setCustomInputVisible={setCustomInputVisible}
       />
       <NumberInput
         label="Number of People"
