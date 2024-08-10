@@ -10,7 +10,7 @@
   font-family: "Space Mono", monospace;
   font-size: 2rem;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.5;
   text-align: right;
   background-color: transparent;
   width: 100%;
@@ -41,7 +41,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 8px 20px;
+  padding: 0.5rem 1.25rem;
   width: 100%;
   background-color: #f3f8fb;
   border-radius: 6px;
@@ -79,12 +79,12 @@
 @media (max-width: 550px) {
   .labelName {
     font-size: 0.9rem;
-    line-height: 20.73px;
+    line-height: 1.5;
   }
   .inputWrapper {
     border-radius: 3.55px;
     margin-top: 8px;
-    padding: 6px 16px;
+    padding: 6px 0;
     width: 100%;
   }
   .numberInput {

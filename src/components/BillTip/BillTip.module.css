@@ -1,18 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
-* {
-  box-sizing: border-box;
-}
+
 .billContainer {
   background-color: white;
   width: 100%;
-  margin-bottom: 65.74px;
-  margin-top: 61.74px;
+  margin-bottom: 4.109rem;
+  margin-top: 3.859rem;
 }
 
 .labelName {
   font-weight: 700;
-  font-size: 20px;
-  line-height: 29.62px;
+  font-size: 1.25rem;
+  line-height: 1.5;
   color: #5d6b6c;
   font-family: "Space Mono", monospace;
 }
@@ -20,25 +18,22 @@
 .buttonContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
-  gap: 24px; /* Space between buttons */
+  gap: 1.5rem; /* Space between buttons */
   width: 100%;
-  box-sizing: border-box;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 .inputContainer {
-  max-width: 158px;
+  /* max-width: 158px; */
   width: 100%;
   border-radius: 6px;
   background-color: #f3f8fb;
   color: #5d6b6c;
-  font-size: 24px;
-  line-height: 35.54px;
+  font-size: 1.5rem;
+  line-height: 1.5;
   font-family: "Space Mono", monospace;
   text-align: center;
-  padding: 0;
   border: 2px solid #26c2ad;
-  overflow: hidden;
   outline: none;
 }
 
@@ -50,7 +45,7 @@
   }
   .labelName {
     font-size: 0.9rem;
-    line-height: 1.3rem;
+    line-height: 1.5;
   }
   .buttonContainer {
     grid-template-columns: repeat(2, 1fr);
@@ -61,9 +56,20 @@
   .inputContainer {
     border-radius: 4px;
     font-size: 1.5rem;
-    padding: 6px 23px;
+    /* padding: 6px 23px; */
     width: 100%;
-    max-width: 157px;
     max-height: 48px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .billContainer {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    width: 100%;
+  }
+  .labelName {
+    font-size: 1.1rem;
+    line-height: 1.5;
   }
 }

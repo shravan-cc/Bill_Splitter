@@ -3,9 +3,9 @@
 .container {
   background-color: #00474b;
   display: flex;
-  width: 454px;
+  width: 100%;
   justify-content: space-between;
-  margin-bottom: 64px;
+  margin-bottom: 4rem;
 }
 
 .labelContainer {
@@ -17,7 +17,7 @@
   font-family: "Space Mono", monospace;
   font-weight: 400;
   font-size: 1.25rem;
-  line-height: 1.9rem;
+  line-height: 1.5;
   letter-spacing: 10%;
 }
 
@@ -39,8 +39,8 @@
 
 @media (max-width: 550px) {
   .text {
-    font-size: 12.25px;
-    line-height: 18.14px;
+    font-size: 0.7666rem;
+    line-height: 1.5;
   }
   .value {
     font-size: 1.8rem;
@@ -48,6 +48,6 @@
   }
   .container {
     width: 100%;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
   }
 }

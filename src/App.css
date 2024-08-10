@@ -59,6 +59,11 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
 }
 
 @font-face {
@@ -67,4 +72,10 @@ h6 {
     url("/fonts/SpaceMono/SpaceMono-Regular.woff2") format("woff2"),
     url("/fonts/SpaceMono/SpaceMono-Regular.woff") format("woff");
   font-style: normal;
+}
+
+.main-container {
+  max-width: 1280px;
+  padding: 20px;
+  width: 100%;
 }

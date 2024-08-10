@@ -9,15 +9,14 @@
 }
 
 .normal {
-  padding: 8px 50px;
+  padding: 0.5rem 0;
   border-radius: 6px;
   background-color: #00474b;
   color: #feffff;
   font-family: "Space Mono", monospace;
   border: none;
   font-weight: 700;
-  font-size: 32px;
-  box-sizing: border-box;
+  font-size: 2rem;
   width: 100%;
 }
 
@@ -29,20 +28,18 @@
 }
 
 .custom {
-  padding: 0;
+  padding: 0.5rem 0;
   border-radius: 6px;
   background-color: #f3f8fb;
   color: #5d6b6c;
   font-family: "Space Mono", monospace;
   border: none;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 35.54px;
-  box-sizing: border-box;
-  width: 100%;
-  display: flex;
+  font-size: 1.5vw;
+  line-height: 1.5;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   width: 100%;
 }
 
@@ -50,13 +47,13 @@
   .normal {
     border-radius: 4px;
     font-size: 1.5rem;
-    padding: 6px 40px;
+    /* padding: 6px 40px; */
     width: 100%;
   }
   .custom {
     border-radius: 4px;
     font-size: 1.5rem;
-    padding: 6px 23px;
+    /* padding: 6px 23px; */
     width: 100%;
   }
 }

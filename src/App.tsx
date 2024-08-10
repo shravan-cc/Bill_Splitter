@@ -85,9 +85,9 @@ function App() {
         <Widget color="blue" icon={faInfoCircle} heading="Yes" desc="yesno" />
       </div>
     </div>*/
-    <>
+    <div className="main-container">
       <FinalForm />
-    </>
+    </div>
   );
 }
 

@@ -3,8 +3,9 @@
 .container {
   background-color: #00474b;
   width: 100%;
-  padding: 56px;
+  padding: 3.5rem;
   border-radius: 16px;
+  box-sizing: border-box;
 }
 
 .resetBtn {
@@ -12,12 +13,12 @@
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: 10%;
-  line-height: 2.3rem;
+  line-height: 1.5;
   background-color: #0d686d;
   border: none;
   color: #00474b;
-  width: 454px;
-  margin-top: 135px;
+  width: 100%;
+  margin-top: 8.438rem;
   border-radius: 7px;
   outline: none;
   cursor: not-allowed;
@@ -34,7 +35,7 @@
 @media (max-width: 550px) {
   .resetBtn {
     font-size: 1.25rem;
-    line-height: 29.62px;
+    line-height: 1.5;
     width: 100%;
     border-radius: 4.32px;
     margin-top: 43px;
