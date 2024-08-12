@@ -16,7 +16,7 @@
 .text {
   font-family: "Space Mono", monospace;
   font-weight: 400;
-  font-size: 1.25rem;
+  font-size: 1.25vw;
   line-height: 1.5;
   letter-spacing: 10%;
 }
@@ -32,18 +32,18 @@
 .value {
   font-family: "Space Mono", monospace;
   font-weight: 700px;
-  font-size: 3rem;
-  line-height: 4.5rem;
+  font-size: 3vw;
+  line-height: 1.5;
   color: #2cc0ad;
 }
 
 @media (max-width: 550px) {
   .text {
-    font-size: 0.7666rem;
+    font-size: 3vw;
     line-height: 1.5;
   }
   .value {
-    font-size: 1.8rem;
+    font-size: 6vw;
     line-height: 2.7rem;
   }
   .container {

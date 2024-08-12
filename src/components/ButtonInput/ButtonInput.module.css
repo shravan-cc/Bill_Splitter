@@ -16,7 +16,7 @@
   font-family: "Space Mono", monospace;
   border: none;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2vw;
   width: 100%;
 }
 
@@ -46,13 +46,13 @@
 @media (max-width: 550px) {
   .normal {
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 6vw;
     /* padding: 6px 40px; */
     width: 100%;
   }
   .custom {
     border-radius: 4px;
-    font-size: 1.5rem;
+    font-size: 6vw;
     /* padding: 6px 23px; */
     width: 100%;
   }
