@@ -4,6 +4,7 @@
 //import viteLogo from "/vite.svg";
 import { useState } from "react";
 import "./App.css";
+import "./index.css";
 import {
   CounterComponent,
   HeadingComponent,
@@ -86,7 +87,7 @@ function App() {
       </div>
     </div>*/
     <>
-      <h1 className="heading">
+      <h1 className="text-[#1e5e54] font-serif p-auto m-0 text-2xl">
         SPLI<br></br>TTER
       </h1>
 

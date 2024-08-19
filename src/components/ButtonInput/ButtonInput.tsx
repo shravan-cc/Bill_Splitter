@@ -13,7 +13,7 @@ export function ButtonInput({
   ...buttonProps
 }: ButtonInputProps) {
   return (
-    <div className={styles.container}>
+    <div className="bg-white flex w-full">
       <button
         value={value}
         className={`${styles[types]} ${selectedTip === Number(value.slice(0, -1)) ? styles.active : ""}`}
