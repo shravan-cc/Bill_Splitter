@@ -16,49 +16,41 @@ export function NumberInput({
   error,
   ...inputProps
 }: NumberInputProps) {
-  /*const [value, setValue] = useState<string>(""); */
-  //const [changed, makeChange] = useState<boolean>(false);
-
-  /*const handleInputChange = (e: any) => {
-    const newValue = e.target.value;
-    setValue(newValue);
-    makeChange(true);
-  };*/
-  /*let error = "";
-  let hasError = false;
-  if (change) {
-    if (inputProps.value === "") {
-      error = "Value cannot be empty";
-      hasError = true;
-    } else if (isNaN(Number(inputProps.value))) {
-      error = "Please enter a number";
-      hasError = true;
-    } else if (Number(inputProps.value) <= 0) {
-      error = "Value must be greater than zero";
-      hasError = true;
-    }
-  }*/
   return (
-    <div className={styles.container}>
-      <label htmlFor="number-input" className={styles.labelName}>
+    <div className="bg-white font-mono">
+      <label
+        htmlFor="number-input"
+        className="text-xl font-bold text-custom-light-grey md:text-sm md:leading-tight"
+      >
         {label}
       </label>
       <div
-        className={`${styles.inputWrapper} ${error ? styles.errorInput : ""} `}
+        // className={`${styles.inputWrapper} ${error ? styles.errorInput : ""} `}
+        className={`relative flex items-center px-5 py-2 w-full bg-custom-label-background rounded-[6px] mt-[14px] border ${
+          error
+            ? "border-red-600"
+            : "border-transparent focus-within:border-custom-dark-green"
+        }`}
       >
         {typeOfIcon === "dollar" ? (
-          <FontAwesomeIcon icon={faDollar} className={styles.icon} />
+          <FontAwesomeIcon
+            icon={faDollar}
+            className="text-2xl font-bold text-custom-dark-teal absolute block text-left"
+          />
         ) : (
-          <FontAwesomeIcon icon={faUser} className={styles.icon} />
+          <FontAwesomeIcon
+            icon={faUser}
+            className="text-2xl font-bold text-custom-dark-teal absolute block text-left"
+          />
         )}
         <input
           type="number"
           id="number-input"
-          className={styles.numberInput}
+          className="font-mono text-[2rem] font-bold leading-[1.5] text-right bg-transparent w-full block outline-none text-custom-dark-teal overflow-hidden no-arrows"
           {...inputProps}
         />
       </div>
-      <span className={styles.error}>{error}</span>
+      <span className="text-red-600 block h-6">{error}</span>
     </div>
   );
 }

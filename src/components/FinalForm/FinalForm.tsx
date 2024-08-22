@@ -1,5 +1,5 @@
 import React, { useReducer, useRef, useState } from "react";
-import styles from "./FinalForm.module.css";
+// import styles from "./FinalForm.module.css";
 import { FormInput } from "../FormInput/FormInput";
 import { Formdisplay } from "../Formdisplay/Formdisplay";
 
@@ -90,7 +90,7 @@ export function FinalForm() {
   const disabeleButton =
     state.bill !== 0 || state.person !== 1 || state.selectedTip !== 0;
   return (
-    <div className={styles.container}>
+    <div className="grid grid-cols-2 gap-[4.125vw] w-full border-box sm-max:flex sm-max:flex-col sm-max:w-full sm-max:gap-[2rem]">
       <FormInput
         bill={state.bill}
         person={state.person}
