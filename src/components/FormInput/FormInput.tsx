@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import styles from "./FormInput.module.css";
+// import styles from "./FormInput.module.css";
 import { NumberInput } from "../NumberInput/NumberInput";
 import { BillTip } from "../BillTip/BillTip";
 
@@ -35,7 +35,7 @@ export function FormInput({
   setCustomInputVisible,
 }: FormInputProps) {
   return (
-    <div className={styles.container}>
+    <div className="bg-white flex flex-col w-full sm-max:w-full">
       <NumberInput
         label="Bill"
         typeOfIcon="dollar"
