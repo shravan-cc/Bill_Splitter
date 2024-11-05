@@ -45,23 +45,7 @@ export function BillTip({
       <div className="grid grid-cols-3 gap-[1.5vw] w-full mt-[1.5rem] sm-max:grid-cols-2 sm-max:mt-[1rem] sm-max:gap-[1rem]">
         {values.map((value) =>
           value === "Custom" ? (
-            /*<ButtonInput
-              value={value}
-              types="custom"
-              key={value}
-              onClick={inputFocus}
-              selectedTip={selectedTip}
-            >
-              <input
-                ref={inputRef}
-                type="text"
-                className={styles.inputContainer}
-                placeholder="Custom"
-                aria-label="Custom tip percentage"
-                onChange={handleInputChangeInCustom}
-                onBlur={handleBlur}
-              />
-            </ButtonInput>*/
+            
             isCustomInputVisible ? (
               <input
                 ref={inputRef}
